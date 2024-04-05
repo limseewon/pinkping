@@ -10,51 +10,122 @@ print_r($cate1);
 
 
 <div class="container">
-  <form action="">
-    <div class="category row">
-
-
-      <div class="col-md-4">
-
-
-        <select class="form-select" aria-label="대분류" id="cate1">
-          <option selected>대분류</option>
-          <?php
-          foreach ($cate1 as $c1) {
-          ?>
-
-
-            <option value="<?= $c1->code; ?>"><?= $c1->name; ?></option>
-
-
-          <?php
-          }
-          ?>
-
-
-        </select>
+  <form action ="">
+      <div class="category row">
+          <div class="col-md-4">
+            <select class="form-select" aria-label="대분류" id="cate1">
+              <option selected>대분류</option>
+                <?php
+                foreach($cate1 as $c1){
+                ?>
+                <option value="<?= $c1->code; ?>"><?= $c1->name; ?></option>
+                <?php  
+                }
+                ?>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select" aria-label="중분류" id="cate2">
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-select" aria-label="소분류" id="cate3">
+            </select>
+          </div>
       </div>
-      <div class="col-md-4">
-
-
-        <select class="form-select" aria-label="중분류" id="cate2">
-
-
-        </select>
-      </div>
-      <div class="col-md-4">
-
-
-        <select class="form-select" aria-label="소분류" id="cate3">
-
-
-        </select>
-      </div>
-
-
-    </div>
   </form>
+
+  <div class="buttons mt-3">
+    <!-- 대분류 등록 버튼 -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cate1Modal">
+      대분류 등록
+    </button>
+
+    <!-- 대분류 등록 MODAL -->
+    <div class="modal fade" id="cate1Modal" tabindex="-1" aria-labelledby="cate1ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="cate1ModalLabel">대분류 등록</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body row">
+            <div class="col">
+              <input type="email" class="form-control" id="code1" name="code1" placeholder="코드명 입력">
+            </div>
+            <div class="col">
+              <input type="email" class="form-control" id="name1" name="name1" placeholder="대분류명 입력">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="sumit" class="btn btn-primary" data-step="3">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- 중분류 등록 버튼 -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cate2Modal">
+      중분류 등록
+    </button>
+
+    <!-- 중분류 등록 MODAL -->
+    <div class="modal fade" id="cate2Modal" tabindex="-1" aria-labelledby="cate2ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="cate2ModalLabel">중분류 등록</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body row">
+            <div class="col">
+              <input type="email" class="form-control" id="code1" name="code1" placeholder="코드명 입력">
+            </div>
+            <div class="col">
+              <input type="email" class="form-control" id="name1" name="name1" placeholder="대분류명 입력">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="sumit" class="btn btn-primary" data-step="2">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- 소분류 등록 버튼 -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cate3Modal">
+      소분류 등록
+    </button>
+
+    <!-- 소분류 등록 MODAL -->
+    <div class="modal fade" id="cate3Modal" tabindex="-1" aria-labelledby="cate3ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="cate1ModalLabel">대분류 등록</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body row">
+            <div class="col">
+              <input type="email" class="form-control" id="code1" name="code1" placeholder="코드명 입력">
+            </div>
+            <div class="col">
+              <input type="email" class="form-control" id="name1" name="name1" placeholder="대분류명 입력">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="sumit" class="btn btn-primary" data-step="3">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
 <script>
   $('#cate1').change(function() {
     makeOption($(this), 2, '중분류', $('#cate2'));
@@ -68,64 +139,72 @@ print_r($cate1);
   });
 
 
-  // async function makeOption(e, step, category, target) {
-  //   let cate = e.val();
-  //   let data = {
-  //     cate: cate,
-  //     step: step,
-  //     category: category
-  //   };
-  //   console.log(data);
+  async function makeOption(e, step, category, target) {
+    let cate = e.val();
+    let data = new URLSearchParams({
+      cate: cate,
+      step: step,
+      category: category
+    });
 
 
-  //   try {
-  //     const response = await fetch('printOption.php', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(data)
-  //     }
-  //     );
+    try {
+      const response = await fetch('printOption.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+      });
 
 
-  //     if (!response.ok) {
-  //       throw new Error('Network response was not ok');
-  //     }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
 
-  //     const result = await response.text();
-  //     console.log(result);
-  //     target.innerHTML = result;
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // }
+      const resultText = await response.text();
 
+
+      target.html(resultText);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  let categorySubmitBtn = $(".modal button[type='submit']");
+  categorySubmitBtn.click(function(){
+    let step = $(this).attr('data-step');
+    save_category(step);
+  });
+  function save_category(step){
+    let pcode = $(`#code${step}`).val();
+    let name = $(`#name${step}`).val();
+  }
 
   
-    function makeOption(e, step, category, target) {
-      let cate = e.val();
-      //console.log(cate);
-      // 비동기 방식으로 printOption 값 3개(cate, step, category) 일시키고, 결과가 나오면 target에 html 태그를 생성
-      let data = {
-        cate: cate,
-        step: step,
-        category: category
-      }
-      console.log(data);
-      $.ajax({
-        async: false, // sucess의 결과가 나오면 작업 수행
-        type: 'post',
-        data: data,
-        url: 'printOption.php',
-        dataType: 'html',
-        success: function(result) {
-          console.log(result);
-          target.html(result);
-        }
-      })
-    }
+    // function makeOption(e, step, category, target) {
+    //   let cate = e.val();
+    //   //console.log(cate);
+    //   // 비동기 방식으로 printOption 값 3개(cate, step, category) 일시키고, 결과가 나오면 target에 html 태그를 생성
+    //   let data = {
+    //     cate: cate,
+    //     step: step,
+    //     category: category
+    //   }
+    //   console.log(data);
+    //   $.ajax({
+    //     async: false, // sucess의 결과가 나오면 작업 수행
+    //     type: 'post',
+    //     data: data,
+    //     url: 'printOption.php',
+    //     dataType: 'html',
+    //     success: function(result) {
+    //       console.log(result);
+    //       target.html(result);
+    //     }
+    //   })
+    // }
     
 </script>
 <?php
