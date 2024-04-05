@@ -1,8 +1,8 @@
 <?php
 $hostname="localhost";
-$dbuserid="abcmall";
+$dbuserid="pinkping";
 $dbpasswd="12345";
-$dbname="abcmall";
+$dbname="pinkping";
 
 $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
 
