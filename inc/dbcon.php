@@ -4,7 +4,6 @@ $dbuserid="abcmall";
 $dbpasswd="12345";
 $dbname="abcmall";
 
-
 $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
 
 
